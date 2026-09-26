@@ -1,0 +1,5 @@
+# Obsidian writes per-session state into the test vault
+test-vault/.obsidian/workspace*.json
+test-vault/.obsidian/graph.json
+test-vault/.obsidian/core-plugins.json
+node_modules/

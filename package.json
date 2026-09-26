@@ -1,0 +1,12 @@
+{
+  "name": "obsidian-theme-semiotic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Obsidian theme after Ron Cobb's Semiotic Standard for ALIEN (1979)",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch"
+  },
+  "license": "MIT"
+}

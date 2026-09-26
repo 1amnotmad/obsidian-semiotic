@@ -1,0 +1,111 @@
+/* ==========================================================================
+   SEMIOTIC · palette tokens
+   The raw palette, kept separate from the Obsidian mapping so it can be
+   reused when porting the theme to other apps (editors, terminals, …).
+
+   Signal colours are taken directly from the Semiotic Standard symbols:
+     red #a00000 · grey #606060 · black #000 · amber #ffb000
+     navy #0a0a70 · green #004411 · panel white #fff
+   ========================================================================== */
+
+/* --- Light · "Nostromo day cycle" ----------------------------------------- */
+.theme-light {
+  /* signal colours */
+  --sem-red: #a00000;
+  --sem-red-hover: #c00000;
+  /* default accent (= signal red); Obsidian's accent colour setting overrides it */
+  --sem-accent-h: 0;
+  --sem-accent-s: 100%;
+  --sem-accent-l: 31.4%;
+  --sem-amber: #ffb000;          /* fills, stripes, highlights */
+  --sem-amber-text: #9a5b00;     /* amber that survives as text on panels (AA) */
+  --sem-navy: #0a0a70;
+  --sem-green: #004411;
+  --sem-grey: #606060;
+  --sem-black: #141414;
+
+  /* supporting hues (only where Obsidian needs a full rainbow) */
+  --sem-cyan: #1f5a6e;
+  --sem-purple: #4a3d78;
+  --sem-pink: #9b2f62;
+
+  /* panel / bulkhead ramp: warm off-whites through machine grey to ink */
+  --sem-base-00: #fbfaf6;
+  --sem-base-05: #f7f6f1;
+  --sem-base-10: #f2f1eb;
+  --sem-base-20: #e8e6de;
+  --sem-base-25: #dfddd4;
+  --sem-base-30: #d2cfc5;
+  --sem-base-35: #c3c0b5;
+  --sem-base-40: #aca99f;
+  --sem-base-50: #86837a;
+  --sem-base-60: #6a6862;
+  --sem-base-70: #555452;
+  --sem-base-100: #141414;
+
+  /* control-panel readout (status bar) */
+  --sem-readout-bg: #1b1b1a;
+  --sem-readout-text: #e9e6dc;
+  --sem-readout-signal: #ffb000;
+
+  --sem-highlight: rgba(255, 176, 0, 0.38);
+  --sem-selection: rgba(160, 0, 0, 0.14);
+
+  /* deprecated RGB triplets, still read by some plugins */
+  --color-red-rgb: 160, 0, 0;
+  --color-orange-rgb: 154, 91, 0;
+  --color-yellow-rgb: 255, 176, 0;
+  --color-green-rgb: 0, 68, 17;
+  --color-cyan-rgb: 31, 90, 110;
+  --color-blue-rgb: 10, 10, 112;
+  --color-purple-rgb: 74, 61, 120;
+  --color-pink-rgb: 155, 47, 98;
+}
+
+/* --- Dark · "MU-TH-UR 6000 / night cycle" (first pass) -------------------- */
+.theme-dark {
+  --sem-red: #ef4b40;
+  --sem-red-hover: #ff6257;
+  --sem-accent-h: 4;
+  --sem-accent-s: 85%;
+  --sem-accent-l: 59.4%;
+  --sem-amber: #ffb000;
+  --sem-amber-text: #ffb000;
+  --sem-navy: #7d8cf0;
+  --sem-green: #6fdc93;
+  --sem-grey: #a3a39c;
+  --sem-black: #e8e6dc;
+
+  --sem-cyan: #66c7d6;
+  --sem-purple: #a795e8;
+  --sem-pink: #e489b4;
+
+  --sem-base-00: #151714;
+  --sem-base-05: #181a17;
+  --sem-base-10: #1c1e1a;
+  --sem-base-20: #10110f;
+  --sem-base-25: #232521;
+  --sem-base-30: #2d302b;
+  --sem-base-35: #383b35;
+  --sem-base-40: #494c45;
+  --sem-base-50: #75786f;
+  --sem-base-60: #93968c;
+  --sem-base-70: #b3b5ab;
+  --sem-base-100: #e8e6dc;
+
+  --sem-readout-bg: #0a0c0a;
+  --sem-readout-text: #8fe8a8;
+  --sem-readout-signal: #ffb000;
+
+  --sem-highlight: rgba(255, 176, 0, 0.30);
+  --sem-selection: rgba(239, 75, 64, 0.28);
+
+  --color-red-rgb: 239, 75, 64;
+  --color-orange-rgb: 255, 176, 0;
+  --color-yellow-rgb: 255, 176, 0;
+  --color-green-rgb: 111, 220, 147;
+  --color-cyan-rgb: 102, 199, 214;
+  --color-blue-rgb: 125, 140, 240;
+  --color-purple-rgb: 167, 149, 232;
+  --color-pink-rgb: 228, 137, 180;
+}

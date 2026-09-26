@@ -1,0 +1,501 @@
+/* ==========================================================================
+   SEMIOTIC — an Obsidian theme after Ron Cobb's Semiotic Standard
+   for Ridley Scott's ALIEN (1979).
+
+   theme.css is generated from src/ by scripts/build.mjs — edit src/, then build.
+
+   Credits
+   · Semiotic Standard symbols designed by Ron Cobb for ALIEN (1979).
+     Vector adaptations by LouH (github.com/louh/semiotic-standard), after
+     Brandon Gamm — CC BY 4.0. Copies via github.com/banastas/SemioticStandard.org
+   · Barlow Condensed — The Barlow Project Authors — SIL OFL 1.1
+   · Share Tech Mono — Carrois Type Design — SIL OFL 1.1
+   Theme code — MIT.
+
+   Colour roles
+   · Accent (links, checkboxes, focus, list markers) follows Obsidian's
+     accent setting; the theme's default accent is signal red.
+   · Signage (heading rules, frames, tab/file edges, hazard stripes, symbols)
+     always uses the fixed signal palette: that's the theme's identity.
+   ========================================================================== */
+
+/* --- Fonts (embedded; community themes may not load remote assets) -------- */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: @font(barlow-condensed-latin-500-normal.woff2);
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: @font(barlow-condensed-latin-600-normal.woff2);
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: @font(barlow-condensed-latin-700-normal.woff2);
+}
+@font-face {
+  font-family: "Share Tech Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: @font(share-tech-mono-latin-400-normal.woff2);
+}
+
+/* --- Palette tokens (src/tokens.css) -------------------------------------- */
+@tokens;
+
+/* --- Mode-independent tokens ---------------------------------------------- */
+body {
+  /* symbols, available to snippets as var(--sem-icon-<name>) */
+@icons-vars;
+
+  /* type */
+  --sem-font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --sem-font-readout: "Share Tech Mono", "OCR A Std", ui-monospace, monospace;
+  --font-interface-theme: "Barlow Condensed", "Arial Narrow";
+  --font-text-theme: "Helvetica Neue", Helvetica, Arial;
+  --font-monospace-theme: "Share Tech Mono", ui-monospace;
+
+  /* condensed faces read small, so the UI scale is bumped by ~1px */
+  --font-ui-smaller: 13px;
+  --font-ui-small: 14px;
+  --font-ui-medium: 16px;
+  --font-ui-large: 22px;
+
+  /* letter-spacing for uppercase labels */
+  --sem-tracking: 0.06em;
+  --sem-tracking-wide: 0.08em;
+
+  /* signage frames */
+  --sem-frame-width: 3px;
+  --sem-edge-width: 2px;
+
+  /* hazard chevrons: amber / black, as painted on Nostromo bulkheads */
+  --sem-stripe-height: 6px;
+  --sem-hazard-stripe: repeating-linear-gradient(-45deg,
+      var(--sem-amber) 0 7px, #141414 7px 14px);
+
+  /* shape: tight radii echo the rounded sign panels */
+  --radius-s: 2px;
+  --radius-m: 4px;
+  --radius-l: 6px;
+  --radius-xl: 10px;
+  --clickable-icon-radius: 2px;
+  --scrollbar-radius: 2px;
+
+  /* headings */
+  --h1-font: var(--sem-font-display);
+  --h2-font: var(--sem-font-display);
+  --h3-font: var(--sem-font-display);
+  --h4-font: var(--sem-font-display);
+  --h5-font: var(--sem-font-display);
+  --h6-font: var(--sem-font-display);
+  --h1-size: 2.15em;
+  --h2-size: 1.7em;
+  --h3-size: 1.38em;
+  --h4-size: 1.16em;
+  --h5-size: 1.02em;
+  --h6-size: 0.92em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+  --h1-letter-spacing: 0.03em;
+  --h2-letter-spacing: 0.04em;
+  --h3-letter-spacing: 0.05em;
+  --h4-letter-spacing: 0.08em;
+  --h5-letter-spacing: 0.12em;
+  --h6-letter-spacing: 0.14em;
+  --h1-line-height: 1.1;
+  --h2-line-height: 1.15;
+  --inline-title-size: 2.3em;
+
+  /* callouts: framed like the signs */
+  --callout-border-width: 2px;
+  --callout-border-opacity: 0.85;
+  --callout-radius: var(--radius-l);
+  --callout-title-weight: 600;
+  --callout-blend-mode: normal;
+
+  /* checkboxes: square */
+  --checkbox-radius: 1px;
+
+  /* tags: small riveted label plates */
+  --tag-radius: 2px;
+  --tag-border-width: 1px;
+  --tag-padding-x: 0.45em;
+  --tag-padding-y: 0.12em;
+  --tag-size: 0.82em;
+
+  /* tabs: squared off */
+  --tab-radius: 0;
+  --tab-radius-active: 0;
+  --tab-curve: 0px;
+  --tab-font-size: 14px;
+  --tab-font-weight: 600;
+
+  /* sidebar */
+  --nav-item-size: 14px;
+  --nav-item-radius: 2px;
+  --nav-heading-weight: 700;
+
+  /* toggles: panel switches */
+  --toggle-radius: 3px;
+  --toggle-thumb-radius: 2px;
+
+  /* misc */
+  --blockquote-border-thickness: 3px;
+  --embed-border-start: var(--sem-frame-width) solid var(--sem-red);
+  --code-border-width: 1px;
+  --code-size: 0.92em;
+  --code-radius: 2px;
+  --status-bar-radius: 0;
+  --status-bar-font-size: 12px;
+  --table-header-font: var(--sem-font-display);
+  --table-header-size: 1.02em;
+  --metadata-label-font: var(--sem-font-display);
+  --metadata-label-font-size: 0.95em;
+  --link-decoration-thickness: 1px;
+  --link-unresolved-opacity: 0.75;
+}
+
+/* --- Obsidian colour mapping (same for both modes; values come from tokens).
+       Only variables that differ from Obsidian's defaults are listed. ------- */
+.theme-light,
+.theme-dark {
+  --color-base-00: var(--sem-base-00);
+  --color-base-05: var(--sem-base-05);
+  --color-base-10: var(--sem-base-10);
+  --color-base-20: var(--sem-base-20);
+  --color-base-25: var(--sem-base-25);
+  --color-base-30: var(--sem-base-30);
+  --color-base-35: var(--sem-base-35);
+  --color-base-40: var(--sem-base-40);
+  --color-base-50: var(--sem-base-50);
+  --color-base-60: var(--sem-base-60);
+  --color-base-70: var(--sem-base-70);
+  --color-base-100: var(--sem-base-100);
+
+  --color-red: var(--sem-red);
+  --color-orange: var(--sem-amber-text);
+  --color-yellow: var(--sem-amber);
+  --color-green: var(--sem-green);
+  --color-cyan: var(--sem-cyan);
+  --color-blue: var(--sem-navy);
+  --color-purple: var(--sem-purple);
+  --color-pink: var(--sem-pink);
+
+  /* accent: defaults to signal red, user-overridable in Settings → Appearance */
+  --accent-h: var(--sem-accent-h);
+  --accent-s: var(--sem-accent-s);
+  --accent-l: var(--sem-accent-l);
+  --text-accent: var(--color-accent);
+  --interactive-accent: var(--color-accent);
+  --interactive-accent-hover: var(--color-accent-1);
+  --text-accent-hover: var(--color-accent-1);
+
+  --text-highlight-bg: var(--sem-highlight);
+  --text-selection: var(--sem-selection);
+  --caret-color: var(--color-accent);
+
+  /* external links in cryo navy; internal links use the accent */
+  --link-external-color: var(--sem-navy);
+  --link-external-color-hover: var(--color-accent);
+
+  /* headings */
+  --h1-color: var(--sem-black);
+  --h2-color: var(--sem-black);
+  --h3-color: var(--sem-red);
+  --h4-color: var(--sem-black);
+  --h5-color: var(--text-muted);
+  --h6-color: var(--text-muted);
+
+  /* callouts (built-in types; semiotic types are coloured by the build) */
+  --callout-default: var(--sem-grey);
+  --callout-quote: var(--sem-grey);
+  --callout-summary: var(--sem-grey);
+  --callout-info: var(--sem-navy);
+  --callout-example: var(--sem-navy);
+  --callout-todo: var(--sem-red);
+  --callout-important: var(--sem-red);
+  --callout-tip: var(--sem-green);
+  --callout-success: var(--sem-green);
+  --callout-question: var(--sem-amber-text);
+  --callout-warning: var(--sem-amber-text);
+  --callout-fail: var(--sem-red);
+  --callout-error: var(--sem-red);
+  --callout-bug: var(--sem-red);
+
+  /* checkboxes: accent-framed */
+  --checkbox-border-color: var(--interactive-accent);
+  --checkbox-border-color-hover: var(--interactive-accent-hover);
+  --checkbox-marker-color: #ffffff;
+  --checklist-done-color: var(--text-faint);
+
+  /* tags */
+  --tag-color: var(--text-muted);
+  --tag-color-hover: var(--text-accent);
+  --tag-background: transparent;
+  --tag-background-hover: var(--background-primary);
+  --tag-border-color: var(--sem-base-40);
+  --tag-border-color-hover: var(--text-accent);
+
+  /* blockquotes / lists */
+  --blockquote-border-color: var(--sem-red);
+  --list-marker-color: var(--text-accent);
+  --list-marker-color-hover: var(--text-accent-hover);
+
+  /* code: syntax in signal colours */
+  --code-background: var(--sem-base-10);
+  --code-border-color: var(--sem-base-30);
+  --code-keyword: var(--sem-red);
+  --code-tag: var(--sem-red);
+  --code-function: var(--sem-navy);
+  --code-string: var(--sem-green);
+  --code-value: var(--sem-amber-text);
+  --code-important: var(--sem-amber-text);
+  --code-property: var(--sem-cyan);
+  --code-operator: var(--sem-grey);
+
+  /* tables */
+  --table-header-background: var(--sem-base-20);
+  --table-header-color: var(--sem-black);
+  --table-border-color: var(--sem-base-35);
+  --table-row-background-hover: var(--sem-base-05);
+  --table-selection: var(--sem-selection);
+
+  /* workspace chrome */
+  --ribbon-background: var(--sem-base-25);
+  --ribbon-background-collapsed: var(--sem-base-25);
+  --titlebar-background: var(--sem-base-25);
+  --titlebar-background-focused: var(--sem-base-25);
+  --titlebar-text-color-focused: var(--sem-black);
+  --tab-container-background: var(--sem-base-20);
+  --tab-background-active: var(--sem-base-00);
+  --tab-text-color-focused-active-current: var(--sem-black);
+  --tab-outline-color: var(--sem-base-30);
+  --divider-color-hover: var(--sem-red);
+
+  --nav-item-color-active: var(--sem-black);
+  --nav-item-background-active: var(--sem-base-00);
+  --nav-item-background-selected: var(--sem-selection);
+
+  /* status bar: control-panel readout */
+  --status-bar-background: var(--sem-readout-bg);
+  --status-bar-text-color: var(--sem-readout-text);
+  --status-bar-border-color: var(--sem-readout-bg);
+
+  /* graph */
+  --graph-line: var(--sem-base-35);
+  --graph-node: var(--sem-grey);
+  --graph-node-unresolved: var(--sem-base-40);
+  --graph-node-tag: var(--sem-green);
+  --graph-node-attachment: var(--sem-amber-text);
+
+  /* inputs / modals */
+  --background-modifier-border-focus: var(--interactive-accent);
+  --modal-border-color: var(--sem-base-35);
+  --prompt-border-color: var(--sem-base-35);
+}
+
+/* ==========================================================================
+   Components — kept to shallow selectors so Obsidian updates don't break them
+   ========================================================================== */
+
+/* --- Stencil labels: condensed uppercase, like bulkhead markings ---------- */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3,
+  .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6),
+.inline-title,
+.markdown-rendered th,
+.markdown-source-view th,
+.metadata-property-key-input,
+.metadata-properties-heading,
+.workspace-tab-header-inner-title,
+.nav-folder-title-content {
+  text-transform: uppercase;
+}
+
+.markdown-rendered th,
+.markdown-source-view th,
+.metadata-property-key-input,
+.metadata-properties-heading,
+.workspace-tab-header-inner-title,
+.nav-folder-title-content,
+.callout-title,
+.modal-title,
+.setting-item-heading .setting-item-name,
+.vertical-tab-header-group-title,
+.empty-state-title,
+.empty-state-action {
+  letter-spacing: var(--sem-tracking);
+}
+
+/* elements that don't already use the interface/display face */
+.callout-title,
+.modal-title,
+.setting-item-heading .setting-item-name,
+.vertical-tab-header-group-title,
+.empty-state-title,
+.empty-state-action {
+  font-family: var(--sem-font-display);
+  text-transform: uppercase;
+}
+
+.empty-state-title,
+.empty-state-action {
+  letter-spacing: var(--sem-tracking-wide);
+}
+
+/* --- Readouts: terminal mono ---------------------------------------------- */
+.tag,
+.cm-hashtag,
+.status-bar {
+  font-family: var(--sem-font-readout);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- Headings ------------------------------------------------------------- */
+.markdown-rendered h1,
+.markdown-source-view .HyperMD-header-1 {
+  border-bottom: var(--sem-frame-width) solid var(--sem-red);
+  padding-bottom: 0.12em;
+}
+
+.markdown-rendered h2::before,
+.markdown-source-view .HyperMD-header-2::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-inline-end: 0.35em;
+  vertical-align: 0.14em;
+  background-color: var(--sem-red);
+}
+
+/* inline title: a framed sign plate */
+.inline-title:not([data-level]) {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.04em 0.4em 0;
+  border: var(--sem-frame-width) solid var(--sem-red);
+  border-radius: 8px;
+  letter-spacing: 0.03em;
+  color: var(--sem-black);
+}
+
+/* --- Horizontal rule: hazard chevrons ------------------------------------- */
+.markdown-rendered hr,
+.markdown-source-view.mod-cm6 hr {
+  border: none;
+  height: var(--sem-stripe-height);
+  background: var(--sem-hazard-stripe);
+  border-radius: 1px;
+}
+
+/* --- Callouts: the symbol as a full-colour sign --------------------------- */
+.callout {
+  /* srgb keeps achromatic callouts neutral (oklch drifts grey toward pink) */
+  background-color: color-mix(in srgb, var(--callout-color) 6%, var(--background-primary));
+}
+
+.callout-title {
+  align-items: center;
+  font-size: 1.05em;
+}
+
+@callout-selector > .callout-title > .callout-icon .svg-icon {
+  display: none;
+}
+
+@callout-selector > .callout-title > .callout-icon {
+  /* the signs are 1000 × 1050 */
+  width: 1.9em;
+  height: 2em;
+  margin-inline-end: 0.3em;
+  background: var(--sem-callout-icon) center / contain no-repeat;
+}
+
+@callout-rules;
+
+/* hazard-class callouts carry a chevron band across the top */
+.callout:is([data-callout="danger"], [data-callout="error"], [data-callout="hazard"],
+  [data-callout="radiation"], [data-callout="radioactive"], [data-callout="exhaust"]) {
+  background-image: var(--sem-hazard-stripe);
+  background-size: 100% var(--sem-stripe-height);
+  background-repeat: no-repeat;
+  padding-top: calc(var(--size-4-3) + var(--sem-stripe-height));
+}
+
+/* --- Tabs: active tab carries the red frame edge -------------------------- */
+.workspace-tab-header-container .workspace-tab-header.is-active {
+  box-shadow: inset 0 var(--sem-edge-width) 0 var(--sem-red),
+    0 0 0 var(--tab-outline-width) var(--tab-outline-color);
+}
+
+/* --- Sidebar: folders read as deck labels, active file gets a red edge ---- */
+.nav-folder-title-content {
+  font-weight: 600;
+}
+
+.tree-item-self.is-active {
+  box-shadow: inset var(--sem-frame-width) 0 0 var(--sem-red);
+}
+
+/* --- Status bar: control-panel readout with an indicator lamp -------------- */
+.status-bar {
+  --icon-color: var(--sem-readout-text);
+  --text-muted: var(--sem-readout-text);
+  --text-faint: var(--sem-readout-text);
+  --background-modifier-hover: rgba(255, 255, 255, 0.12);
+}
+
+.status-bar::before {
+  content: "";
+  align-self: center;
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-inline: 4px 6px;
+  border-radius: 50%;
+  background-color: var(--sem-readout-signal);
+  box-shadow: 0 0 5px var(--sem-readout-signal);
+}
+
+/* --- Modals & prompts: red header edge, like a sign frame ----------------- */
+.modal,
+.prompt {
+  border-top: var(--sem-frame-width) solid var(--sem-red);
+}
+
+/* --- Empty tab: bridge sign + hull registration ---------------------------- */
+.empty-state-container::before {
+  content: "";
+  display: block;
+  width: 88px;
+  height: 92px;
+  margin: 0 auto 4px;
+  background: var(--sem-icon-bridge) center / contain no-repeat;
+}
+
+.empty-state-container::after {
+  /* "\00B7 " is a middle dot; the space after the escape is consumed */
+  content: "USCSS NOSTROMO \00B7  REG. 180924609";
+  display: block;
+  margin-top: 28px;
+  font-family: var(--sem-font-readout);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+}
