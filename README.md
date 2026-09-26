@@ -2,7 +2,7 @@
 
 An Obsidian theme based on Ron Cobb's **Semiotic Standard**, the signage he designed for the USCSS Nostromo in Ridley Scott's *Alien* (1979).
 
-![Semiotic](screenshot.png)
+![Semiotic in light and dark mode](docs/images/hero.png)
 
 The light mode ("Nostromo day cycle") uses:
 - off-white padded panels and bulkhead greys
@@ -10,7 +10,38 @@ The light mode ("Nostromo day cycle") uses:
 - stenciled condensed labels
 - amber/black hazard chevrons
 
-A first-pass dark mode ("MU-TH-UR 6000") is included.
+A dark mode ("MU-TH-UR 6000") is included as a first pass.
+
+## Screenshots
+
+Both modes shown side by side, captured at 2× in Obsidian 1.14. Click any image for full resolution.
+
+<table>
+  <tr>
+    <th width="50%">Light · “Nostromo day cycle”</th>
+    <th width="50%">Dark · “MU-TH-UR 6000”</th>
+  </tr>
+  <tr><td colspan="2"><b>Notes:</b> sign-plate title, properties, stencilled headings, tags and links</td></tr>
+  <tr>
+    <td><a href="docs/images/light-editor.png"><img src="docs/images/light-editor.png" alt="Light mode: note with properties and headings"></a></td>
+    <td><a href="docs/images/dark-editor.png"><img src="docs/images/dark-editor.png" alt="Dark mode: note with properties and headings"></a></td>
+  </tr>
+  <tr><td colspan="2"><b>Built-in callouts:</b> each type carries a Semiotic sign</td></tr>
+  <tr>
+    <td><a href="docs/images/light-callouts.png"><img src="docs/images/light-callouts.png" alt="Light mode: built-in callouts with Semiotic signs"></a></td>
+    <td><a href="docs/images/dark-callouts.png"><img src="docs/images/dark-callouts.png" alt="Dark mode: built-in callouts with Semiotic signs"></a></td>
+  </tr>
+  <tr><td colspan="2"><b>Semiotic callouts:</b> one per symbol, with hazard bands on the dangerous ones</td></tr>
+  <tr>
+    <td><a href="docs/images/light-semiotic.png"><img src="docs/images/light-semiotic.png" alt="Light mode: semiotic callouts such as airlock, cryo and galley"></a></td>
+    <td><a href="docs/images/dark-semiotic.png"><img src="docs/images/dark-semiotic.png" alt="Dark mode: semiotic callouts such as airlock, cryo and galley"></a></td>
+  </tr>
+  <tr><td colspan="2"><b>Details:</b> checkboxes, blockquotes, hazard-stripe divider, tables and code</td></tr>
+  <tr>
+    <td><a href="docs/images/light-details.png"><img src="docs/images/light-details.png" alt="Light mode: tasks, blockquote, hazard divider, table and code"></a></td>
+    <td><a href="docs/images/dark-details.png"><img src="docs/images/dark-details.png" alt="Dark mode: tasks, blockquote, hazard divider, table and code"></a></td>
+  </tr>
+</table>
 
 ## What it changes
 
