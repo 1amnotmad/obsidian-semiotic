@@ -60,3 +60,7 @@
 > [!ladderway] Ladderway
 
 > [!suit-required] Suit required
+
+> [!todo] Repair checklist
+> - [ ] Repair landing strut
+> - [x] Find Jonesy

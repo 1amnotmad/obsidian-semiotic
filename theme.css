@@ -623,6 +623,12 @@ body {
   padding-top: calc(var(--size-4-3) + var(--sem-stripe-height));
 }
 
+/* tasks: on mobile the checkbox (1.15× text) overhangs the 3ch list indent,
+   and .callout-content's overflow-x clipped its left edge */
+.callout-content > ul.contains-task-list > li {
+  margin-inline-start: max(3ch, calc(var(--checkbox-size) * 1.5));
+}
+
 /* --- Tabs: active tab carries the red frame edge -------------------------- */
 .workspace-tab-header-container .workspace-tab-header.is-active {
   box-shadow: inset 0 var(--sem-edge-width) 0 var(--sem-red),
