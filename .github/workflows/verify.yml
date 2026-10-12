@@ -1,0 +1,33 @@
+name: Verify build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Build
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+
+      - name: Committed theme.css matches the build
+        run: |
+          git diff --exit-code -- theme.css \
+            || { echo "::error::theme.css is stale. Run 'npm run build' and commit it."; exit 1; }
+
+      - name: Versions agree
+        run: |
+          m=$(node -p 'require("./manifest.json").version')
+          p=$(node -p 'require("./package.json").version')
+          [ "$m" = "$p" ] || { echo "::error::manifest.json ($m) and package.json ($p) versions differ"; exit 1; }

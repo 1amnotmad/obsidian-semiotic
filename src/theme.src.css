@@ -308,6 +308,19 @@ body {
   --prompt-border-color: var(--sem-base-35);
 }
 
+/* Obsidian swaps in OLED black on mobile (.is-mobile.theme-*), which outranks
+   the mapping above; restate the colours it touches at the same weight.
+   Mobile sizes and radii are left to Obsidian. */
+.is-mobile.theme-light,
+.is-mobile.theme-dark {
+  --color-base-00: var(--sem-base-00);
+  --color-base-10: var(--sem-base-10);
+  --color-base-20: var(--sem-base-20);
+  --color-base-100: var(--sem-base-100);
+  --tag-background: transparent;
+  --modal-border-color: var(--sem-base-35);
+}
+
 /* ==========================================================================
    Components — kept to shallow selectors so Obsidian updates don't break them
    ========================================================================== */

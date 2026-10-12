@@ -1,0 +1,54 @@
+name: Release
+
+# Push a tag that matches manifest.json's version (x.y.z, no "v") to build,
+# verify and attest the theme, and open a draft release with its assets.
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write      # create the release
+      id-token: write      # sign the attestation
+      attestations: write  # store the attestation
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Tag matches manifest version
+        run: |
+          v=$(node -p 'require("./manifest.json").version')
+          [ "$v" = "$GITHUB_REF_NAME" ] || { echo "::error::tag $GITHUB_REF_NAME != manifest.json version $v"; exit 1; }
+
+      - name: Build and verify
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+          git diff --exit-code -- theme.css \
+            || { echo "::error::theme.css is stale. Run 'npm run build' and commit it."; exit 1; }
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: |
+            theme.css
+            manifest.json
+
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Semiotic $GITHUB_REF_NAME" \
+            --generate-notes \
+            --draft \
+            theme.css manifest.json screenshot.png
