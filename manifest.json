@@ -1,7 +1,8 @@
 {
   "name": "Semiotic",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "minAppVersion": "1.6.0",
   "author": "iamnotmad",
-  "authorUrl": "https://github.com/1amnotmad"
+  "authorUrl": "https://github.com/1amnotmad",
+  "fundingUrl": "https://ko-fi.com/1amnotmad"
 }

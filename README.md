@@ -164,7 +164,7 @@ This keeps the theme offline-only and overridable, as the community-theme guidel
 
 The Semiotic Standard symbols were designed by **Ron Cobb** for *Alien* (1979). The vector adaptations are by LouH, after Brandon Gamm, and are licensed under CC BY 4.0. Fonts are licensed under SIL OFL 1.1. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-The theme code is MIT licensed (see [LICENSE](LICENSE)). This is a fan work, not affiliated with or endorsed by the rights holders of *Alien*.
+The theme code is MIT licensed (see [LICENSE](LICENSE)). The symbol artwork and the embedded fonts aren't covered by the MIT licence; they keep their own licences, listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This is a fan work, not affiliated with or endorsed by the rights holders of *Alien*.
 
 ## Support
 
