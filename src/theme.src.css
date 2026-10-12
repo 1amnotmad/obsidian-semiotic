@@ -451,10 +451,13 @@ body {
   padding-top: calc(var(--size-4-3) + var(--sem-stripe-height));
 }
 
-/* tasks: on mobile the checkbox (1.15× text) overhangs the 3ch list indent,
-   and .callout-content's overflow-x clipped its left edge */
-.callout-content > ul.contains-task-list > li {
-  margin-inline-start: max(3ch, calc(var(--checkbox-size) * 1.5));
+/* tasks: on mobile the checkbox (1.15× text) overhangs its list indent, and
+   .callout-content's overflow-x clipped it. Widen the clip box into the
+   callout's padding without moving the content: covers any list, at any
+   depth, from any renderer (Dataview, Tasks, …) */
+.callout-content {
+  margin-inline-start: calc(var(--size-4-2) * -1);
+  padding-inline-start: var(--size-4-2);
 }
 
 /* --- Tabs: active tab carries the red frame edge -------------------------- */

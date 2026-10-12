@@ -64,3 +64,8 @@
 > [!todo] Repair checklist
 > - [ ] Repair landing strut
 > - [x] Find Jonesy
+
+> [!info] Indirect tasks
+> - Deck A
+>     - [ ] Seal airlock
+>     - [x] Check cryo pods
